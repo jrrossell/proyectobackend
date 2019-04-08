@@ -1,4 +1,4 @@
-package com.java.curso.controller;
+package com.curso.serviciosmultas.servicioclientes.controller;
 
 import java.util.List;
 
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.java.curso.model.Cliente;
-import com.java.curso.model.ClienteRepository;
+import com.curso.serviciosmultas.servicioclientes.model.ClienteRepository;
+import com.curso.serviciosmultas.servicioclientes.model.entities.Cliente;
 
 @RestController
 public class ControllerCliente {
@@ -27,7 +27,7 @@ public class ControllerCliente {
 	}
 	
 	@GetMapping("/clientes/{matricula}")
-	public Cliente cliente(@PathVariable String matricula) {
+	public Cliente cliente(@PathVariable Integer matricula) {
 		return repository.findById(matricula)
 				.orElse(null);
 	}
@@ -38,12 +38,12 @@ public class ControllerCliente {
 	}
 	
 	@DeleteMapping("/clientes/{matricula}")
-	public void borrarCliente(@PathVariable String matricula) {
+	public void borrarCliente(@PathVariable Integer matricula) {
 		repository.deleteById(matricula);
 	}
 	
 	@PutMapping("/clientes/{matricula}")
-	public Cliente actualizarCliente(@RequestBody Cliente cliente,@PathVariable String matricula) {
+	public Cliente actualizarCliente(@RequestBody Cliente cliente,@PathVariable Integer matricula) {
 		return repository.findById(matricula)
 			.map(c -> {
 					c.setNombreCliente(cliente.getNombreCliente());
