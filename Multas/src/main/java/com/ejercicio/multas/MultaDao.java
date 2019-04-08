@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.ejercicio.multas;
 
 import java.util.HashMap;
 
